@@ -1,9 +1,21 @@
 import { useEffect, useState } from 'react';
 import  * as contracts  from "../../types";
 import './App.css';
-import Switch from './components/Switch';
 import Display from './components/Display'
-import Modal from './components/Modal';
+
+/**
+ * LEFT TO DO
+ * Create Board with 4 Columns: requested, purchased, shipped, installed. 
+ * 
+ * Drag and drop deach card between given states
+ * 
+ * As part of a transition, a comment should be added to the 
+ * device to signal the state change as well as a timestamp that is automatically 
+ * supplied
+ * 
+ * 
+ * When a user opens a device display data AND ALSO notes (state, timechanged)
+ */
 
 function App() {
   const [deviceList, setDeviceList] = useState<contracts.DeviceList>({
@@ -25,20 +37,13 @@ function App() {
     fetchDevices();
   }, []);
   
-  // const displayModal = () => {
-  //   alert("yo!")
-  // };
-
-
-  /*
-    When a user opens a device they should be able to view 
-    the details of the device and any comments associated with that device.
-  */ 
 
   return (
     <div>
-      <Display devices={deviceList.switches} Modal={ Modal }/>
-
+      <Display devices={deviceList.switches} />
+      <Display devices={deviceList.locks}  />
+      <Display devices={deviceList.thermostats}  />
+      <Display devices={deviceList.dimmers} />
     </div>
   );
 }

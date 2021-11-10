@@ -31,6 +31,7 @@ export interface DeviceList {
     thermostats: Thermo[];
 }
 
+
 export enum Devices {
     Switch = 'SWITCH',
     Lock = 'LOCK',
