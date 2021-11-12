@@ -17,7 +17,6 @@ const Modal = ({ device }: ModalProps) => {
   return (
     <div>
       <button onClick={open}>{`details`}</button>
-  
       <Dialog isOpen={showDialog} onDismiss={close}>
         <p>{JSON.stringify(device)}</p>
         <button onClick={close}>Okay</button>

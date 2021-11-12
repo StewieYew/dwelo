@@ -32,9 +32,25 @@ export interface DeviceList {
 }
 
 
+export interface DeviceArray {
+   deviceArray: (Thermo | Switch | Dimmer | Lock)[]
+}
+
+export interface IColumn {
+    id: string;
+    title: string;
+    task: [];
+}
+
 export enum Devices {
     Switch = 'SWITCH',
     Lock = 'LOCK',
     Dimmer = 'DIMMER',
     Thermo = 'THERMO',
+}
+
+export interface DeviceColumn {
+    id: string
+    title: string,
+    devices: Device[]
 }

@@ -16,6 +16,7 @@ import { Device, DeviceList, Devices, Dimmer, Lock, Switch, Thermo } from "./typ
     }
     
 
+
  const createDeviceList = (arrayOfDevices: Device[]): DeviceList => {
      const deviceList: DeviceList = {
          switches: [],
@@ -95,3 +96,4 @@ const isNumber = (id: unknown): id is number => {
 const isArrayOfStrings = (value: unknown): value is string[] => {
     return Array.isArray(value) ? value.every(String) : false;
 };
+
