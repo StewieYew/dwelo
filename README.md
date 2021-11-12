@@ -11,7 +11,7 @@ npm install
 cd server
 npm install
 ```
-Finally change back to the root direcrty and run
+Finally change back to the root directory and run
 ```sh
 npm run start
 ```
