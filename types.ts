@@ -1,6 +1,12 @@
 export interface Device {
     name: string;
     type: string;
+    // status: DeviceStatus;
+}
+
+export interface DeviceStatus {
+    state: string
+    timeStateChanged: Date
 }
 
 export interface Switch extends Device {

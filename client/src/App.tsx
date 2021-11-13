@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import  * as contracts  from "../../types";
 import './App.css';
 import Column from './components/Column';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { DragDropContext, DragStart, DropResult, ResponderProvided } from 'react-beautiful-dnd'
 import { Device } from '../../types';
 import styled from 'styled-components';
 
@@ -23,18 +23,25 @@ import styled from 'styled-components';
 
  const Container = styled.div`
  display: flex;
+ justify-content: center;
 `;
 
 
-interface defaultColumProps {
+interface ColumProps {
   [name: string]: {
     id: string,
-    devices: Device[]
+    devices: Device[],
   }
 }
 
+// interface DeviceStatus {
+//   state: string
+//   timeStateChanged: Date
+// }
+
 function App() {
-  const [columns, setColumns] = useState<defaultColumProps>({});
+  const [columns, setColumns] = useState<ColumProps>({});
+  // const [device, setDevice] = useState<Device>();
   const referenceFetchDevices = useRef(() => {});
 
   const fetchDevices = async () => {
@@ -58,7 +65,7 @@ function App() {
     setColumns({
       Requested: {
         id: 'Requested',
-        devices: devices
+        devices: devices,
       },
       Purchased: {
         id: 'Purchased',
@@ -75,6 +82,14 @@ function App() {
     }
     );
   };
+
+  const onDragStart = (initial: DragStart, provided: ResponderProvided) => {
+    const start = columns[initial.source.droppableId];
+    const deviceInContext = start.devices[initial.source.index];
+    console.log("start", deviceInContext);
+    // setDevice(deviceInContext);
+    };
+  
 
   const onDragEnd = ({ source, destination }: DropResult) => {
      // Make sure we have a valid destination
@@ -129,19 +144,30 @@ function App() {
  
        // Insert the item into the end list
        newEndList.splice(destination.index, 0, start.devices[source.index]);
+    
  
        // Create a new end column
        const newEndCol = {
          id: end.id,
          devices: newEndList
        };
+
+      // const test = start.devices[source.index];
+      //  console.log("HI", end.id);
+      //  console.log("DATE", new Date());
  
        // Update the state
        setColumns(state => ({
          ...state,
          [newStartCol.id]: newStartCol,
-         [newEndCol.id]: newEndCol
+         [newEndCol.id]: newEndCol,
        }));
+
+       // update device state
+      //  setDevice(state => ({
+      //    ...state,
+        
+      //  }))
        return null;
      }
 };
@@ -154,7 +180,7 @@ function App() {
   return (
     <div>
       <Container>
-        <DragDropContext onDragEnd={onDragEnd}>
+        <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
           {
             Object.values(columns).map((col) => {
               return (col.id && col.devices) ?

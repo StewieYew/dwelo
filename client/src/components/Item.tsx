@@ -4,19 +4,24 @@ import * as uuid from 'uuid';
 import { Device } from '../../../types';
 import { Draggable } from 'react-beautiful-dnd';
 
+interface StatusProps {
+    status: string,
+    timeChanged: Date
+};
+
 interface ItemProps {
     name: string;
     type: string;
     device: Device;
     index: number;
-}
+    status?: StatusProps;
+};
 
 const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     padding: 10,
     margin: `0 15px 50px`,
     background: isDragging ? "clear" : "white",
     color: isDragging ? 'white' : 'black',
-    border: `1px solid black`,
     fontSize: `20px`,
     borderRadius: `5px`,
 
@@ -32,7 +37,7 @@ const Item = ({ name, type, device, index }: ItemProps) => {
                     {...provided.dragHandleProps}
                     style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                 >
-                    <Card border="primary" style={{ width: '18rem' }}>
+                    <Card className="text-center">
                         <Card.Header>{`${name}`}</Card.Header>
                         <Card.Body>
                             <Card.Title>{`${type}`}</Card.Title>
