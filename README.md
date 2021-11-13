@@ -1,4 +1,4 @@
-# dwelo
+# Dwelo
 Thank you for taking the time to look at this code. below are instructions for how to install
 
 ## Installation
