@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Item from './Item';
 import { Droppable } from 'react-beautiful-dnd';
-import * as uuid from 'uuid'
 import { Device } from '../../../types';
 
 interface ColumnProps {
@@ -31,12 +30,12 @@ const Column = ({ device, title }: ColumnProps) => {
     return (
         <Container>
             <Title>{title}</Title>
-            <Droppable droppableId={uuid.v4()}>
+            <Droppable droppableId={title}>
                 {provided => (
                     <DeviceListStyle ref={provided.innerRef} {...provided.droppableProps}
                     >
-                        {device.map((test, idx) => {
-                            return <Item name={test.name} device={test} type={test.type} index={idx} />
+                        {device.map((device, idx) => {
+                            return <Item name={device.name} device={device} type={device.type} index={idx} />
                         })}
                         {provided.placeholder}
                     </DeviceListStyle>
