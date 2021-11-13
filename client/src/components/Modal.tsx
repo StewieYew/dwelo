@@ -26,10 +26,13 @@ const Modal = ({ device }: ModalProps) => {
   
   return (
     <div>
-      <Button onClick={open}>{`details`}</Button>
+      <Button onClick={open}>{`View Details`}</Button>
       <Dialog isOpen={showDialog} onDismiss={close}>
-        <p>{JSON.stringify(device)}</p>
-        <button onClick={close}>Okay</button>
+        {Object.entries(device).map(([key, value]) => {
+          return <p>{`${key}: ${value}`}</p>
+        })}
+        {/* <p>{JSON.stringify(device, null, 2)}</p> */}
+        <Button onClick={close}>Close</Button>
       </Dialog>
     </div>
   );
