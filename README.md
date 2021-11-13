@@ -20,5 +20,5 @@ npm run start
 ```
 
 Current Progress: 
-https://user-images.githubusercontent.com/46377692/141658472-4224d0e7-1288-498f-aaaf-879c648487dd.mp4
+https://user-images.githubusercontent.com/46377692/141658614-fbd25ada-7371-464b-aea2-6c08cd19e867.mp4
 
