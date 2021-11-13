@@ -43,7 +43,6 @@ const Item = ({ name, type, device, index }: ItemProps) => {
 
             )}
         </Draggable>
-
     )
 };
 
