@@ -18,3 +18,7 @@ cd ..
 npm install
 npm run start
 ```
+
+Current Progress: 
+https://user-images.githubusercontent.com/46377692/141658057-ee3cf273-7391-436f-8315-4f498304b25f.mov
+
