@@ -3,7 +3,7 @@ Thank you for taking the time to look at this code. below are instructions for h
 
 ## Installation
 
-After cloning please cd into both client and server install
+After cloning please cd into both client and server and install
 ```sh
 cd client
 npm install
