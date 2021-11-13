@@ -157,7 +157,6 @@ function App() {
       <Container>
         <DragDropContext onDragEnd={onDragEnd}>
           {Object.values(columns).map((col: any) => {
-            // console.log(col.devices)
               const title: string = col.id;
               const devices: Device[] = col.devices;
               if(title && devices) {
