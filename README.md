@@ -23,6 +23,6 @@ Current Progress:
 https://user-images.githubusercontent.com/46377692/141658614-fbd25ada-7371-464b-aea2-6c08cd19e867.mp4
 
 ## Tech Stack
-React
-Typescript
+React,
+Typescript,
 Express
