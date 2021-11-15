@@ -6,14 +6,6 @@ import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import { Device } from '../../types';
 import styled from 'styled-components';
 
-
-/**
- *  left to implement:
- * 
- * unit test
- */
-
-
  const Container = styled.div`
  display: flex;
  justify-content: center;
@@ -130,8 +122,6 @@ function App() {
          id: end.id,
          devices: newEndList
        };
-
-       console.log("yo", ...newEndCol.devices)
 
        setColumns(state => ({
          ...state,
