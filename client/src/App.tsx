@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import  * as contracts  from "../../types";
 import './App.css';
 import Column from './components/Column';
-import { DragDropContext, DragStart, DropResult, ResponderProvided } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 import { Device } from '../../types';
 import styled from 'styled-components';
 
@@ -14,11 +14,10 @@ import styled from 'styled-components';
  * device to signal the state change as well as a timestamp that is automatically 
  * supplied
  * 
- * When a user opens a device display data + (state, timechanged)
+ * When a user opens a device (state, timechanged)
  * 
  * unit test
  */
-
 
 
  const Container = styled.div`
@@ -41,8 +40,9 @@ interface ColumProps {
 
 function App() {
   const [columns, setColumns] = useState<ColumProps>({});
+  const referenceFetchDevices = useRef(() => { });
   // const [device, setDevice] = useState<Device>();
-  const referenceFetchDevices = useRef(() => {});
+  // const [state, dispatch] = useReducer(dragReducer, );
 
   const fetchDevices = async () => {
     const response: contracts.DeviceList = await fetch("/api/devices")
@@ -82,14 +82,6 @@ function App() {
     }
     );
   };
-
-  const onDragStart = (initial: DragStart, provided: ResponderProvided) => {
-    const start = columns[initial.source.droppableId];
-    const deviceInContext = start.devices[initial.source.index];
-    console.log("start", deviceInContext);
-    // setDevice(deviceInContext);
-    };
-  
 
   const onDragEnd = ({ source, destination }: DropResult) => {
      // Make sure we have a valid destination
@@ -152,22 +144,13 @@ function App() {
          devices: newEndList
        };
 
-      // const test = start.devices[source.index];
-      //  console.log("HI", end.id);
-      //  console.log("DATE", new Date());
- 
-       // Update the state
        setColumns(state => ({
          ...state,
          [newStartCol.id]: newStartCol,
          [newEndCol.id]: newEndCol,
+          
        }));
 
-       // update device state
-      //  setDevice(state => ({
-      //    ...state,
-        
-      //  }))
        return null;
      }
 };
@@ -180,7 +163,7 @@ function App() {
   return (
     <div>
       <Container>
-        <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
+        <DragDropContext onDragEnd={onDragEnd}>
           {
             Object.values(columns).map((col) => {
               return (col.id && col.devices) ?

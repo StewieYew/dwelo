@@ -4,24 +4,17 @@ import * as uuid from 'uuid';
 import { Device } from '../../../types';
 import { Draggable } from 'react-beautiful-dnd';
 
-interface StatusProps {
-    status: string,
-    timeChanged: Date
-};
-
 interface ItemProps {
     name: string;
     type: string;
     device: Device;
     index: number;
-    status?: StatusProps;
 };
 
 const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     padding: 10,
     margin: `0 15px 50px`,
-    background: isDragging ? "clear" : "white",
-    color: isDragging ? 'white' : 'black',
+    background: isDragging ? "clear" : "clear",
     fontSize: `20px`,
     borderRadius: `5px`,
 

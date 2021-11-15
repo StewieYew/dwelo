@@ -31,7 +31,6 @@ const Modal = ({ device }: ModalProps) => {
         {Object.entries(device).map(([key, value]) => {
           return <p>{`${key}: ${value}`}</p>
         })}
-        {/* <p>{JSON.stringify(device, null, 2)}</p> */}
         <Button onClick={close}>Close</Button>
       </Dialog>
     </div>
