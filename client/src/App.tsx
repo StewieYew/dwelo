@@ -10,12 +10,6 @@ import styled from 'styled-components';
 /**
  *  left to implement:
  * 
- * As part of a transition, a comment should be added to the 
- * device to signal the state change as well as a timestamp that is automatically 
- * supplied
- * 
- * When a user opens a device (state, timechanged)
- * 
  * unit test
  */
 
@@ -23,26 +17,19 @@ import styled from 'styled-components';
  const Container = styled.div`
  display: flex;
  justify-content: center;
-`;
-
-
-interface ColumProps {
-  [name: string]: {
-    id: string,
-    devices: Device[],
-  }
-}
-
-// interface DeviceStatus {
-//   state: string
-//   timeStateChanged: Date
-// }
-
+ `;
+ 
+ 
+ interface ColumProps {
+   [name: string]: {
+     id: string,
+     devices: Device[],
+    }
+ }
+  
 function App() {
   const [columns, setColumns] = useState<ColumProps>({});
   const referenceFetchDevices = useRef(() => { });
-  // const [device, setDevice] = useState<Device>();
-  // const [state, dispatch] = useReducer();
 
   const fetchDevices = async () => {
     const response: contracts.DeviceList = await fetch("/api/devices")
@@ -144,11 +131,17 @@ function App() {
          devices: newEndList
        };
 
+       console.log("yo", ...newEndCol.devices)
+
        setColumns(state => ({
          ...state,
          [newStartCol.id]: newStartCol,
-         [newEndCol.id]: newEndCol,
-          
+         [newEndCol.id]: {
+           id: newEndCol.id,
+           devices: newEndCol.devices.map(device =>
+            start.devices[source.index].name === device.name ? { ...device, status: `${newEndCol.id} on ${new Date().toDateString()}` } : device
+           ),
+         }
        }));
 
        return null;
