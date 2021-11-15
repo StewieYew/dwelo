@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import  * as contracts  from "../../types";
 import './App.css';
 import Column from './components/Column';
@@ -42,7 +42,7 @@ function App() {
   const [columns, setColumns] = useState<ColumProps>({});
   const referenceFetchDevices = useRef(() => { });
   // const [device, setDevice] = useState<Device>();
-  // const [state, dispatch] = useReducer(dragReducer, );
+  // const [state, dispatch] = useReducer();
 
   const fetchDevices = async () => {
     const response: contracts.DeviceList = await fetch("/api/devices")
