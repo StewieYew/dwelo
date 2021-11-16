@@ -20,9 +20,12 @@ npm run start
 ```
 
 Current Progress: 
-https://user-images.githubusercontent.com/46377692/141658614-fbd25ada-7371-464b-aea2-6c08cd19e867.mp4
+https://user-images.githubusercontent.com/46377692/142018888-76b03321-ed5c-469d-90a0-647a35964e44.mov
 
 ## Tech Stack
 React,
+
+
+
 Typescript,
 Express
