@@ -21,7 +21,7 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
     ...draggableStyle
 });
 
-const Item = ({ name, type, device, index }: ItemProps) => {
+const DeviceItem = ({ name, type, device, index }: ItemProps) => {
     return (
         <Draggable draggableId={`${name} ${index}`} key={uuid.v4()} index={index}>
             {(provided, snapshot) => (
@@ -44,4 +44,4 @@ const Item = ({ name, type, device, index }: ItemProps) => {
     )
 };
 
-export default Item
+export default DeviceItem

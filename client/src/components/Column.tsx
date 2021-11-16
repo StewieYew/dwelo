@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Item from './Item';
+import DeviceItem from './DeviceItem';
 import { Droppable } from 'react-beautiful-dnd';
 import { Device } from '../../../types';
 
@@ -35,7 +35,7 @@ const Column = ({ device, title }: ColumnProps) => {
                     <DeviceListStyle ref={provided.innerRef} {...provided.droppableProps}
                     >
                         {device.map((device, idx) => {
-                            return <Item name={device.name} device={device} type={device.type} index={idx} />
+                            return <DeviceItem name={device.name} device={device} type={device.type} index={idx} />
                         })}
                         {provided.placeholder}
                     </DeviceListStyle>
