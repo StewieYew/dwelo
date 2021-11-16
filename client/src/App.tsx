@@ -129,7 +129,7 @@ function App() {
          [newEndCol.id]: {
            id: newEndCol.id,
            devices: newEndCol.devices.map(device =>
-            start.devices[source.index].name === device.name ? { ...device, status: `${newEndCol.id} on ${new Date().toDateString()}` } : device
+            start.devices[source.index].name === device.name ? { ...device, status: `${newEndCol.id} on ${new Date().toLocaleString('en-US')}` } : device
            ),
          }
        }));
