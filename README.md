@@ -1,5 +1,5 @@
 # Dwelo
-Thank you for taking the time to look at this code. below are instructions for how to install
+Thank you for taking the time to look at this code. Below are instructions for how to install
 
 ## Installation
 
@@ -19,13 +19,10 @@ npm install
 npm run start
 ```
 
-Current Progress: 
-https://user-images.githubusercontent.com/46377692/142018888-76b03321-ed5c-469d-90a0-647a35964e44.mov
+## Demo
+https://user-images.githubusercontent.com/46377692/142019188-a856600a-cc24-4924-beb1-aee3451e5260.mp4
 
 ## Tech Stack
 React,
-
-
-
 Typescript,
 Express
